@@ -3,7 +3,7 @@
     "AlarmDescription": "This alarm would be triggered if the daily estimated charges exceeds 30$",
     "ActionsEnabled": true,
     "AlarmActions": [
-        "arn:aws:sns:us-east-1:109660340435:30-dollar-billing-alarm"
+        "arn:aws:sns:<Region>:<ACCOUNT_ID>:<SNS_TOPIC_NAME>"
     ],
     "EvaluationPeriods": 1,
     "DatapointsToAlarm": 1,
