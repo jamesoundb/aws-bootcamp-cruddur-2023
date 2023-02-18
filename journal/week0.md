@@ -4,10 +4,12 @@
 
 ### Recreate Logical Diagram in Lucid charts
 My logical diagram:
+https://lucid.app/lucidchart/76c09251-fa51-4f6e-9baf-069f9ab86e4d/edit?invitationId=inv_3f021880-6227-434a-9aad-5962a78ccb30
 ![Cuddur Logical Diagram](https://user-images.githubusercontent.com/20709997/219713675-a295895f-3400-4f1b-b806-33a9ee0d59d9.png)
 
 ### Recreate Conceptual Diagram in Lucid charts
 My Conceptual Diagram:
+https://lucid.app/lucidchart/b206aa39-9f9c-4c4b-b599-1e3d3279b9e7/edit?invitationId=inv_723eedc0-d0ef-4ae5-9bb0-374f2e2b78bc
 ![Cruddur - Conceptual Diagram](https://user-images.githubusercontent.com/20709997/219714203-2da290af-67ba-40b6-8b17-1323da5da0bb.png)
 
 ### Create an Admin User
@@ -51,6 +53,7 @@ I jumped ahead on updating this policy and added it to my user group to avoid lo
 
 ### Created CI/CD pipeline diagram
 This is a pretty basic CI/CD pipeline involving AWS services but it certainly helps in getting your code deployed quickly and in an automated fashion.
+https://lucid.app/lucidchart/b08603eb-e77c-4aee-a5b6-e597d95d2a9e/edit?invitationId=inv_e469d963-00c3-4a32-92f4-cac8b3a49ae0
 ![CI_CD Pipeline Final](https://user-images.githubusercontent.com/20709997/219820049-2b252951-5e2c-4a10-8a4d-f0c4332b8c6f.png)
 
 
