@@ -14,10 +14,10 @@ https://lucid.app/lucidchart/b206aa39-9f9c-4c4b-b599-1e3d3279b9e7/edit?invitatio
 
 ### Create an Admin User
 I created my IAM user group and then I added the admin user that I created to this group. Following best practices it is easier to manage users in groups this way so you can attach policies to the groups instead of trying to manage policies based on each individual IAM user.
-![IAM_User_Group_edit](https://user-images.githubusercontent.com/20709997/219729139-a6b75cb5-f8ea-409a-a183-a85d00e2b3a9.png)
+![IAM_User_Group_edit](https://user-images.githubusercontent.com/20709997/219975386-04c2a92f-9e31-42b1-ac8b-568be33577de.png)
 
 IAM user admin created with MFA enabled and Access keys generated.
-![Admin_User_edit](https://user-images.githubusercontent.com/20709997/219726604-e7ec074e-b3e9-4b03-8f49-91229800755d.png)
+![Admin_User_edit](https://user-images.githubusercontent.com/20709997/219975406-e9db51a4-2ec9-4b69-b50e-f024a082bef6.png)
 
 ### Use Cloudshell
 Launched the Cloudshell environment from the AWS console
@@ -25,14 +25,14 @@ Launched the Cloudshell environment from the AWS console
 
 ### Generate AWS Credits
 I generated Access keys for the admin user.
-![API_Access_Keys_edit](https://user-images.githubusercontent.com/20709997/219720758-0f5eb24b-e5fb-43c2-9076-7fd8ef3d7188.png)
+![API_Access_Keys_edit](https://user-images.githubusercontent.com/20709997/219975425-469c523c-2096-48df-b907-9047be79d7f8.png)
 
 ### Installed AWS CLI
 See .gitpod.yml file
 
 ### Create a Billing Alarm
 I created this SNS billing alarm topic and confirmed my subscription to it. I created it using the aws cli and the configuration files can be found in the /aws/json_week_0/ directory.
-![SNS_30_dollar_billing_alarm_edit](https://user-images.githubusercontent.com/20709997/219724908-2cf4c68a-4246-4439-b627-fd860acfb5e1.png)
+![SNS_30_dollar_billing_alarm_edit](https://user-images.githubusercontent.com/20709997/219975452-ef36ef0d-35fe-4500-b0e2-edf2ec5b3d51.png)
 
 I created this Cloudwatch billing alarm metric which triggers the SNS topic if the metric threshold is met.
 ![CloudWatch_billing_alarm](https://user-images.githubusercontent.com/20709997/219821431-94e52f41-897b-4f10-afe1-24a83c9bc77a.png)
@@ -45,11 +45,11 @@ I created this 30 dollar budget using the aws cli, configuration files can be fo
 
 ### Set up MFA for both root and user accounts, created a user group, and attached custom policies to user group.
 I always prefer managing users in groups, it takes care of a lot of unnecessary admin tasks.
-![IAM_User_Group_edit](https://user-images.githubusercontent.com/20709997/219729139-a6b75cb5-f8ea-409a-a183-a85d00e2b3a9.png)
+![IAM_User_Group_edit](https://user-images.githubusercontent.com/20709997/219975470-fb5ba3b4-e64b-4c2e-bad2-af278eb7ce80.png)
 
 ### Created a customer managed policy to allow billing viewing by user group because of IAM action deprecation occurring in 07/23.
 I jumped ahead on updating this policy and added it to my user group to avoid losing access to billing viewing and cost management. It's always good to stay a step ahead of these deprecations to avoid complications in the future.
-![New_billing_Cost_Management_Managed_Policy_edit](https://user-images.githubusercontent.com/20709997/219820183-4365eee6-c380-4804-9345-df645d601626.png)
+![New_billing_Cost_Management_Managed_Policy_edit](https://user-images.githubusercontent.com/20709997/219975482-f4ddac30-68fe-41b7-869d-58270d5a99dd.png)
 
 ### Created CI/CD pipeline diagram
 This is a pretty basic CI/CD pipeline involving AWS services but it certainly helps in getting your code deployed quickly and in an automated fashion.
