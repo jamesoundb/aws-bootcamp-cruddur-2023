@@ -30,7 +30,6 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
       npm update -g 
       npm install -g npm@latest
-      npm i
       cd $THEIA_WORKSPACE_ROOT
   
   - name: postgres
