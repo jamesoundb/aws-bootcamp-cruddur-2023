@@ -1,13 +1,13 @@
 tasks:
   - name: Update OS
-  - before: |
+  - init: |
       sudo apt update -y
       sudo apt upgrade -y
       sudo apt autoremove -y
       gp sync-done apt
       
   - name: Update NPM and Initialize Frontend
-  - before: |
+  - init: |
       npm update -g 
       npm install -g npm@latest
       gp sync-done npm
@@ -31,9 +31,8 @@ tasks:
     init: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-      sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev
-      gp sync-await ap
+      gp sync-await apt
 
 vscode:
   extensions:
