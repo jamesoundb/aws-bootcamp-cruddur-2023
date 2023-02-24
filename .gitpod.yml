@@ -28,7 +28,8 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT/backend-flask
       pip3 install -r requirements.txt
       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
-      npm install -g npm@latest
+      npm update -g
+      npm i
       cd $THEIA_WORKSPACE_ROOT
   
   - name: postgres
