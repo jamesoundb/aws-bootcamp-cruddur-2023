@@ -4,11 +4,13 @@ tasks:
       sudo apt update -y
       sudo apt upgrade -y
       sudo apt autoremove -y
+      gp sync-done apt
       
-  - name: Update NPM
+  - name: Update NPM and Initialize Frontend
   - before: |
       npm update -g 
       npm install -g npm@latest
+      gp sync-done npm
   
   - name: Install aws-cli
     env:
@@ -20,11 +22,10 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
   
-  - name: Initialize Frontend and Backend
+  - name: Initialize Backend
     init: |
       cd /workspace/aws-bootcamp-cruddur-2023/backend-flask
       pip3 install -r requirements.txt
-      cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
   
   - name: postgres
     init: |
@@ -32,6 +33,7 @@ tasks:
       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
       sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev
+      gp sync-await ap
 
 vscode:
   extensions:
