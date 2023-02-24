@@ -24,12 +24,11 @@ tasks:
   
   - name: Initialize Backend and Frontend
     init: |
-      gp sync-await npm
       cd $THEIA_WORKSPACE_ROOT/backend-flask
       pip3 install -r requirements.txt
       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
       npm update -g
-      npm i
+      npm install -g npm@latest
       cd $THEIA_WORKSPACE_ROOT
   
   - name: postgres
