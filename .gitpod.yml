@@ -11,7 +11,7 @@ tasks:
   
   - name: Update OS
   - init: |
-      sudo apt update 
+      sudo apt update -y
       sudo apt upgrade -y
       sudo apt autoremove -y
       
