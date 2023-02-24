@@ -22,12 +22,13 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
   
-  - name: Initialize Backend
+  - name: Initialize Backend and Frontend
     init: |
-      cd /workspace/aws-bootcamp-cruddur-2023/backend-flask
+      cd $THEIA_WORKSPACE_ROOT/backend-flask
       pip3 install -r requirements.txt
-      cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
+      cd $THEIA_WORKSPACE_ROOT/frontend-react-js
       npm i
+      cd $THEIA_WORKSPACE_ROOT
   
   - name: postgres
     init: |
