@@ -9,11 +9,14 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
   
-  - name: Update OS and npm
+  - name: Update OS
   - init: |
       sudo apt update 
       sudo apt upgrade -y
       sudo apt autoremove -y
+      
+  - name: Update NPM
+  - init: |
       npm update -g 
       npm install -g npm@latest
   
