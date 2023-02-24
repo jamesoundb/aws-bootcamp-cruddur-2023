@@ -11,10 +11,12 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT
   
   - name: Update OS and npm
-  - init: |
-      sudo apt update; sudo apt upgrade -y
+  - before: |
+      sudo apt update 
+      sudo apt upgrade -y
       sudo apt autoremove -y
-      npm update -g; npm install npm@latest -g
+      npm update -g 
+      npm install -g npm@latest
   
   - name: Initialize Frontend and Backend
     init: |
