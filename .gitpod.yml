@@ -1,4 +1,15 @@
 tasks:
+  - name: Update OS
+  - before: |
+      sudo apt update -y
+      sudo apt upgrade -y
+      sudo apt autoremove -y
+      
+  - name: Update NPM
+  - before: |
+      npm update -g 
+      npm install -g npm@latest
+  
   - name: Install aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
@@ -9,23 +20,11 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
   
-  - name: Update OS
-  - init: |
-      sudo apt update -y
-      sudo apt upgrade -y
-      sudo apt autoremove -y
-      
-  - name: Update NPM
-  - init: |
-      npm update -g 
-      npm install -g npm@latest
-  
   - name: Initialize Frontend and Backend
     init: |
       cd /workspace/aws-bootcamp-cruddur-2023/backend-flask
       pip3 install -r requirements.txt
       cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
-      npm i
   
   - name: postgres
     init: |
