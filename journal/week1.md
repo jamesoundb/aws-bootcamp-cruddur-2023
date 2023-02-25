@@ -52,3 +52,13 @@
 #### Run Postgres Container and ensure it works
 * #### I got Postgres working even despite the totally different extension layout than the one Andrew showed in his example. I'm not sure why it is so different other than I'm sure our versions of VS Code are probably different and I'm pretty sure that's the reason.
 ![Postgres works](assets/Postgres_works.png)
+
+## Homework Challenges
+
+#### Update my .gitpod.yml file to get rid of all of the vulnerabilities with npm as well as update the OS within the workspace.
+* #### This was a bit more difficult than I thought that it would be. I was trying to eliminate the vulnerabilities listed in the npm install as well as update all of the apt packages. I used the Gitpod documentation to utilize the gp sync-done and gp sync-await commands which worked. I was able to do it successfully but the only issue is I have to create a new workspace every time for these changes to take place which is not ideal. I will be looking into other solutions in the coming weeks.
+[.gitpod.yml file](https://github.com/jamesoundb/aws-bootcamp-cruddur-2023/blob/main/.gitpod.yml)
+
+#### Ran a scan of one of my repositories using Snyk.
+* #### I signed up for Snyk after watching Ashish's security video and I scanned one of my repositories. It was a repo using Terraform so it actually threw me a lot of false positives after I investigated it. They were triggered from tf variables and other resources that weren't defined in a way that the scan had expected I guess. Either way it was pretty cool to see Snyk in action and I'm sure I can utilize it in the future.
+![Snyk_Resume_Challenge_Scan](assets/Snyk_Resume_Challenge_Scan.png)
