@@ -1,16 +1,12 @@
 tasks:
-  - name: Update OS
+  - name: Update OS and NPM
   - init: |
       sudo apt update -y
       sudo apt upgrade -y
       sudo apt autoremove -y
-      gp sync-done apt
-      
-  - name: Update NPM
-  - init: |
       npm update -g 
       npm install -g npm@latest
-      gp sync-done npm
+      gp sync-done apt-npm
   
   - name: Install aws-cli
     env:
@@ -24,7 +20,7 @@ tasks:
   
   - name: Initialize Backend and Frontend
     init: |
-      gp sync-await npm
+      gp sync-await apt-npm
       cd $THEIA_WORKSPACE_ROOT/backend-flask
       pip3 install -r requirements.txt
       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
@@ -33,7 +29,7 @@ tasks:
   
   - name: postgres
     init: |
-      gp sync-await apt
+      gp sync-await apt-npm
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
       sudo apt update -y
