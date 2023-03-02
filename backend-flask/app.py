@@ -38,7 +38,7 @@ app = Flask(__name__)
 
 # Instrument Xray 
 xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
+xray_recorder.configure(service='backend-flask')
 XRayMiddleware(app, xray_recorder)
 
 # Initialize automatic instrumentation with Flask -------HoneyComb----------
