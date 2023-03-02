@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta, timezone
+from aws_xray_sdk.core import xray_recorder
+
 class NotificationsActivities:
   def run():
     now = datetime.now(timezone.utc).astimezone()
@@ -24,3 +26,10 @@ class NotificationsActivities:
     },
     ]
     return results
+    # Xray trace segment
+    segment = xray_recorder.begin_segment('notifications_activities')
+    dict ={
+      "now": now.isoformat()
+    }
+    segment.put_metadata('key', dict, 'namespace')
+    xray_recorder.end_segment()
