@@ -1,9 +1,14 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
+
 tracer = trace.get_tracer("home-activities")
 
 class HomeActivities:
   def run():
+    # logger is disabled currently to save on spend
+    # logger.info("home activities")
+    
+    # Implementation of traces and spans for HoneyComb
     with tracer.start_as_current_span("home-activities-mock-data"):
       span = trace.get_current_span()
       now = datetime.now(timezone.utc).astimezone()
