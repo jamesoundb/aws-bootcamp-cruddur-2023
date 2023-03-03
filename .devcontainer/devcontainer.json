@@ -15,11 +15,13 @@
 				"ms-azuretools.vscode-docker",
 				"42Crunch.vscode-openapi",
 				"cweijan.vscode-postgresql-client2",
-				"ms-python.python"
+				"ms-python.python",
+				"ms-vscode-remote.remote-containers"
 			]
 		}
-	}
-
+	},
+	"postCreateCommand": "cd /workspaces/aws-bootcamp-cruddur-2023/frontend-react-js && npm i"
+	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
