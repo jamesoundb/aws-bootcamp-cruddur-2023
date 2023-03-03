@@ -3,6 +3,9 @@ from aws_xray_sdk.core import xray_recorder
 
 class NotificationsActivities:
   def run():
+    # xray_recorder.begin_segment("activities_notifications")
+    # xray_recorder.put_annotation('metadata', "activities_notifications")
+    # xray_recorder.end_segment()
     now = datetime.now(timezone.utc).astimezone()
     results = [{
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
@@ -26,10 +29,3 @@ class NotificationsActivities:
     },
     ]
     return results
-    # Xray trace segment
-    segment = xray_recorder.begin_segment('notifications_activities')
-    dict ={
-      "now": now.isoformat()
-    }
-    segment.put_metadata('key', dict, 'namespace')
-    xray_recorder.end_segment()
