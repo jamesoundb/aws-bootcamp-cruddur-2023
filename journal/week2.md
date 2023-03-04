@@ -3,13 +3,13 @@
 ## Homework
 
 #### [Watch Week 2 Live-Stream Video](https://www.youtube.com/watch?v=2GD9xCzRId4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=30)
-* I was able to follow along for most of the video but I had to watch it again because I did not have my environment setup correctly in Gitpod. I had misconfigured my .gitpod file with all of my tinkering and python wasn't installed. After fixing that I was able to get the traces and spans going with HoneyComb.
+* #### I was able to follow along for most of the video but I had to watch it again because I did not have my environment setup correctly in Gitpod. I had misconfigured my .gitpod file with all of my tinkering and python wasn't installed. After fixing that I was able to get the traces and spans going with HoneyComb.
    
 #### [Watch Chirag Spending Considerations](https://www.youtube.com/watch?v=2W3KeqCjtDY)
-* A good breakdown of spending considerations for each of the services used for distributed tracing, observability, and monitoring. I'll be sure to check my CloudWatch logs as Chirag mentioned, I don't want any surprise bills. HoneyComb is super generous on their free tier and it will be more than enough for the bootcamp.
+* #### A good breakdown of spending considerations for each of the services used for distributed tracing, observability, and monitoring. I'll be sure to check my CloudWatch logs as Chirag mentioned, I don't want any surprise bills. HoneyComb is super generous on their free tier and it will be more than enough for the bootcamp.
 
 #### [Watch Ashish's Observability and Security Considerations](https://www.youtube.com/watch?v=bOf4ITxAcXc&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=31)
-* Ashish is great, "Logging Sucks!" that cracked me up! First thing he mentioned and he isn't wrong! Digging through logs is monotonous and hopefully he is right about observability and the future. 
+* #### Ashish is great, "Logging Sucks!" that cracked me up! First thing he mentioned and he isn't wrong! Digging through logs is monotonous and hopefully he is right about observability and the future. 
 
 #### Instrument HoneyComb with OTEL
 * #### I got all of this up and running without much trouble which was great, instrumenting HoneyComb was very straight forward because their documentation is really solid.
@@ -36,7 +36,7 @@
 ![CloudWatch_Log_Stream_Log_Events](assets/CloudWatch_Log_Stream_Log_Events.png)
 
 #### Integrate Rollbar and capture an error
-* #### I really like how staightforward Rollbar was for integration and it was easy to use. It's nice to be able to capture errors in this way and I can see how helpful this is to anyone looking to monitor errors.
+* #### I really like how straightforward Rollbar was for integration and it was easy to use. It's nice to be able to capture errors in this way and I can see how helpful this is to anyone looking to monitor errors.
 * #### Here are some items that were errors and warnings that I was able to capture. A good amount of these were when I was trying to instrument X-Ray traces, segments, and subsegments with annotations.
 ![Rollbar_error_items.png](assets/Rollbar_error_items.png)
 * #### Nothing like a classic Hello World! test.
