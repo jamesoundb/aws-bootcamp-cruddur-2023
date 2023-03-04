@@ -52,5 +52,5 @@
 ![Frontend_from_Codespaces_env](assets/Frontend_from_Codespaces_env.png)
 * #### The backend container up and running from the Codespaces environment.
 ![backend_from_Codespaces_env](assets/backend_from_Codespaces_env.png)
-* #### This was the command that I utilized to run npm update and npm i in the frontend-react-js directory.
+* #### This was the command that I utilized in the devcontainers.json file to run npm update and npm i in the frontend-react-js directory.
 ![postCreateCommand_Codespaces](assets/postCreateCommand_Codespaces.png)
