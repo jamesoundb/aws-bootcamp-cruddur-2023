@@ -1,5 +1,7 @@
 FROM python:3.10-slim-buster
 
+ENV PORT=4567
+
 WORKDIR /backend-flask
 
 COPY requirements.txt requirements.txt
