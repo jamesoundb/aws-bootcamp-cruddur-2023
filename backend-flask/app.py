@@ -148,9 +148,11 @@ def data_home():
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
-@xray_recorder.capture('acitvities_notifications')
+# @xray_recorder.capture('acitvities_notifications')
 def data_notifications():
-  data = NotificationsActivities.run()
+  data_notifications = NotificationsActivities(request)
+  data = data_notifications.run()
+  # data = NotificationsActivities.run()
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
