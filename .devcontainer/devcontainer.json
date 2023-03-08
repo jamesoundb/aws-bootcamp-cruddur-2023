@@ -21,7 +21,8 @@
 			]
 		}
 	},
-	"postCreateCommand": "cd /workspaces/aws-bootcamp-cruddur-2023/frontend-react-js && npm update -g && npm i"
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
+	
 	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
