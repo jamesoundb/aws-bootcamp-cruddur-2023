@@ -142,13 +142,13 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
-@xray_recorder.capture('acitvities_home')
+@xray_recorder.capture('activities_home')
 def data_home():
   data = HomeActivities.run()
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
-# @xray_recorder.capture('acitvities_notifications')
+# @xray_recorder.capture('activities_notifications')
 def data_notifications():
   data_notifications = NotificationsActivities(request)
   data = data_notifications.run()
