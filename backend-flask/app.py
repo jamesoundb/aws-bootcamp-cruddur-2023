@@ -170,7 +170,7 @@ def data_home():
     app.logger.debug('unauthenticated')
 
   
-    data = HomeActivities.run()
+  data = HomeActivities.run()
 
   return data, 200
 
