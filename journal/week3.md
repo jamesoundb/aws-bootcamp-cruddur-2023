@@ -38,3 +38,11 @@
 
 #### [Watch about different approaches to verifying JWTs](https://www.youtube.com/watch?v=nJjbI4BbasU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=43)
 * #### Great info here about JWTs and using different libraries to help with authentication. Also a good breakdown on different ways to decouple your application authentication using middleware, API Gateway, or a sidecar container. There are pros and cons to each design that need to be thought over and implemented differently depending on your desired outcome and budget.
+
+## Homework Challenges
+
+#### I fixed my devcontainers.json postCreateCommand script for Codespaces to get postgresql properly installed.
+* #### I didn't realize that I hadn't implementd this and it took a bit of tinkering but eventually I got it to work.
+![postCreateCommand_sh_script](assets/postCreateCommand_sh_script.png)
+* #### Verify that everything was installed and updated
+![All_packages_installed_in_Codespaces_1](assets/All_packages_installed_in_Codespaces_1.png)
