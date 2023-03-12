@@ -26,7 +26,7 @@
 ![Implement_Signup_and_Verification_1](assets/Implement_Signup_and_Verification_1.png)
 
 #### Implement Custom Confirmation Page
-* #### Added the custom message that confirmed you were signed in and authentication was also confirmed. Andrew went with a Lore quote, who was responsible for the death of all colonists on Omicron Theta. I went with the guy that was intrumental in creating a weapon that destroyed Alderaan.
+* #### Added the custom message that confirmed you were signed in and authentication was also confirmed. Andrew went with a Lore quote, the android who was responsible for the death of all colonists on Omicron Theta. I went with the guy that was intrumental in creating a weapon that destroyed Alderaan. Touché!
 ![Darth_Sidious_Secret_Auth_Quote](assets/Darth_Sidious_Secret_Auth_Quote.png)
 
 #### Implement Custom Recovery Page
@@ -42,7 +42,7 @@
 ## Homework Challenges
 
 #### I fixed my devcontainers.json postCreateCommand script for Codespaces to get postgresql properly installed.
-* #### I didn't realize that I hadn't implementd this and it took a bit of tinkering but eventually I got it to work.
+* #### I didn't realize that I hadn't implemented this and it took a bit of tinkering but eventually I got it to work.
 ![postCreateCommand_sh_script](assets/postCreateCommand_sh_script.png)
 * #### Verify that everything was installed and updated
 ![All_packages_installed_in_Codespaces_1](assets/All_packages_installed_in_Codespaces_1.png)
