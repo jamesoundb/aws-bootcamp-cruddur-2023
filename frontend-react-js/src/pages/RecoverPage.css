@@ -1,7 +1,7 @@
 article.recover-article .recover-info .logo {
   width: 140px;
   height: 140px;
-  fill: #2021246c;
+  fill: var(--logo);
 }
 
 article.recover-article {
@@ -11,7 +11,7 @@ article.recover-article {
   height: 100%;
   justify-content: flex-start;
   align-items: center;
-  background: #8819f5;
+  background: var(--bg);
 }
 
 article.recover-article .recover-wrapper {
@@ -44,7 +44,7 @@ article.recover-article input[type='password'] {
   resize: none;
   width: 100%;
   padding: 16px;
-  border: solid 1px #555555;
+  border: solid 1px var(--field-border);
   background: #1f1f1f;
   color: #fff;
 }
