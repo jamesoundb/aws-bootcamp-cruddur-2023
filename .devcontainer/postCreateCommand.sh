@@ -13,4 +13,4 @@ sudo apt-get update -y;
 sudo apt install -y postgresql-client-13 libpq-dev;
 
 # RDS Update SG Rule
-./workspaces/aws-bootcamp-cruddur-2023/backend-flask/bin/rds-update-sg-rule-codespaces
+cd /workspaces/aws-bootcamp-cruddur-2023/ && ./backend-flask/bin/rds-update-sg-rule-codespaces
