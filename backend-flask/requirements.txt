@@ -14,3 +14,6 @@ rollbar
 watchtower
 
 Flask-AWSCognito
+
+psycopg[binary]
+psycopg[pool]

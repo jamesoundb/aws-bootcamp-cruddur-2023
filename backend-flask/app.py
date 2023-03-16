@@ -86,9 +86,9 @@ def init_rollbar():
 # LOGGER.info("test log")
 
 # Instrument Xray 
-xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='backend-flask')
-XRayMiddleware(app, xray_recorder)
+# xray_url = os.getenv("AWS_XRAY_URL")
+# xray_recorder.configure(service='backend-flask')
+# XRayMiddleware(app, xray_recorder)
 
 # Initialize automatic instrumentation with Flask -------HoneyComb----------
 FlaskInstrumentor().instrument_app(app)
@@ -155,7 +155,7 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
-@xray_recorder.capture('activities_home')
+# @xray_recorder.capture('activities_home')
 # @aws_auth.authentication_required
 def data_home():
   access_token = extract_access_token(request.headers)
@@ -183,7 +183,7 @@ def data_notifications():
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
-@xray_recorder.capture('user_activities')
+# @xray_recorder.capture('user_activities')
 def data_handle(handle):
   model = UserActivities.run(handle)
   if model['errors'] is not None:
