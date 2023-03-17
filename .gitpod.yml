@@ -18,6 +18,10 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
   
+  command: |
+        export GITPOD_IP=$(curl ifconfig.me)
+        source $THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule-gitpod
+  
   - name: Initialize Backend and Frontend
     init: |
       gp sync-await apt-npm
@@ -53,7 +57,3 @@ ports:
   - name: xray-daemon
     port: 2000
     visibility: public
-
-    command: |
-        export GITPOD_IP=$(curl ifconfig.me)
-        source $THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule-gitpod
