@@ -1,0 +1,11 @@
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="RDS Stop!"
+printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+
+
+
+aws rds stop-db-instance \
+    --db-instance-identifier $RDS_INSTANCE
