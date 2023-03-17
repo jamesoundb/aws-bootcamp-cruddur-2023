@@ -14,4 +14,4 @@ sudo apt install -y postgresql-client-13 libpq-dev;
 
 # RDS Update SG Rule
 export CODESPACES_IP=$(curl ifconfig.me)
-cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./backend-flask/bin/rds-update-sg-rule-codespaces
+cd ${CODESPACE_VSCODE_FOLDER} && ./backend-flask/bin/rds-update-sg-rule-codespaces
