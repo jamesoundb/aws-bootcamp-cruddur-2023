@@ -54,6 +54,6 @@ ports:
     port: 2000
     visibility: public
 
-command: |
-    export GITPOD_IP=$(curl ifconfig.me)
-    source $THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule-gitpod
+    command: |
+        export GITPOD_IP=$(curl ifconfig.me)
+        source $THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule-gitpod
