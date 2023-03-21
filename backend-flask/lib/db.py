@@ -1,16 +1,54 @@
 from psycopg_pool import ConnectionPool
 import os
-
+import re
+import sys
+from flask import current_app as app
 
 class Db:
   def __init__(self):
     self.init_pool()
 
+  def template(self, name):
+    template_path = os.path.join(app.root_path, 'db', 'sql', name+ '.sql')
+    with open(template_path, 'r') as f:
+      template_content = f.read()
+    return template_content
+
   def init_pool(self):
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
+  
+  def print_sql(self, title, sql):
+    cyan = '\033[96m'
+    no_color = '\033[0m'
+    print("\n")
+    print(f"{cyan}SQL STATEMENT>>[{title}]>>>>>>>>{no_color}")
+    print(sql + "\n")
+  
+  # Check to make sure that RETURNING is in all uppercase
+  # When we want to commit data such as an insert with returning id
+  def query_commit(self, sql, params):
+    self.print_sql("commit with returning id", sql)
+    print(sql + "\n")
+    
+    pattern = r"\bRETURNING\b"
+    is_returning_id =re.search(pattern, sql)
+    
+    try:
+      with self.pool.connection() as conn:
+        cur = conn.cursor()
+        cur.execute(sql, params)
+        if is_returning_id:
+          returning_id = cur.fetchone()[0]
+        conn.commit()
+        if is_returning_id:
+          return returning_id
+    except Exception as err:
+      self.print_sql_err(err)  
+  
   # When we want to commit data such as an insert
-  def query_commit(self):
+  def query_commit(self, sql):
+    print("SQL STATEMENT![commit]>>>>>>>>>>>>>")
     try:
       conn = pool.connection()
       cur = conn.cursor()
@@ -38,7 +76,6 @@ class Db:
   def query_object_json(self, sql):
     print("SQL STATEMENT![object]>>>>>>>>>>>>>")
     print(sql + "\n")
-
     wrap_sql = self.query_wrap_object(sql)
     with self.pool.connection() as conn:
         with conn.cursor() as cur:
