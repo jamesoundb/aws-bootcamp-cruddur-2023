@@ -17,7 +17,7 @@
 
 #### [Connect Gitpod to RDS Instance](https://www.youtube.com/watch?v=Sa2iB33sKFo&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=47)
 * #### Using the connection bash script that was created earlier allowed us to connect our workspace to the RDS instance. An update to the SG rule was needed because everytime the workspace spins up a new IP address is allocated. 
-* #### I created two scripts for the Codespaces and Gitpod workspaces to allow the SG rule to be updated with the proper workspace IP addresses. I updated both my Codespaces secrets and my Gitpod variables to include the necessary $DB_SG_ID and $DB_SG_RULE_ID envars. 
+* #### I created two scripts one for Codespaces and one for Gitpod to allow the SG rule to be updated with the proper workspace IP addresses. I updated both my Codespaces secrets and my Gitpod variables to include the necessary $DB_SG_ID and $DB_SG_RULE_ID envars. 
 * #### The $GITPOD_IP envar was added to the .gitpod.yml file and then I added the $CODESPACES_IP envar to my postCommandCreate bash script. These IP addresses were obtained by running the curl ifconfig.me command. 
 
 #### [Create Congito Trigger to insert user into database](https://www.youtube.com/watch?v=7qP4RcY2MwU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=48)
@@ -35,6 +35,11 @@
 #### [Create new activities with a database insert](https://www.youtube.com/watch?v=fTksxEQExL4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=49)
 * #### Went through the video and got everything implemented but was stuck on having my user be attributed to the crud. Here's the first implementation:
 ![Working_before_handle_fix.png](assets/Working_before_handle_fix.png)
-* #### After searching through Discord I found the issue was addressed so I followed the instruction listed [here](https://discord.com/channels/1055552619441049660/1086233246691495968/1086233246691495968)
+* #### After searching through Discord I found the issue was addressed so I followed the instructions listed [here](https://discord.com/channels/1055552619441049660/1086233246691495968/1086233246691495968)
 * #### Once I made these changes I was able to get a crud up with my name attributed, I figured a Star Wars quote was appropriate.
 ![James_Luke_Crud.png](assets/James_Luke_Crud.png)
+
+## Homework Challenges
+* #### I made a script to start and stop my RDS instance using the AWS cli, it's pretty simple and it's easier to do this than doing it from the console. I added an $RDS_INSTANCE envar to handle my instance name.
+![RDS_start_script.png](assets/RDS_start_script.png)
+![db-stop-script.png](assets/db-stop-script.png)
