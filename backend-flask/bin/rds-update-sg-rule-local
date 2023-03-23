@@ -1,7 +1,5 @@
 #! /usr/bin/bash
 
-export LOCAL_IP=$(curl ifconfig.me)
-
 CYAN='\033[1;36m'
 NO_COLOR='\033[0m'
 LABEL="RDS Update SG Rule"
