@@ -1,2 +1,4 @@
 docker/dynamodb/*
 .devcontainer/*
+devcontainer.json
+postCreateCommand.sh
