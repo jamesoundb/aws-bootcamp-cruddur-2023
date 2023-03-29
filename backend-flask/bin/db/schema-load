@@ -5,13 +5,13 @@ NO_COLOR='\033[0m'
 LABEL="DB Schema Load!"
 printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
-ABS_PATH=$(readlink -f "$0")
+# ABS_PATH=$(readlink -f "$0")
 
-PARENT_DIR="$(dirname "$(dirname "$ABS_PATH")")"
+# PARENT_DIR="$(dirname "$(dirname "$ABS_PATH")")"
 
-schema_path="$PARENT_DIR/db/schema.sql"
+# schema_path="$PARENT_DIR/db/schema.sql"
 
-# schema_path=$(realpath .)/backend-flask/db/schema.sql
+schema_path=/workspaces/aws-bootcamp-cruddur-2023/backend-flask/db/schema.sql
 echo $schema_path
 
 if [ "$1" = "prod" ]; then

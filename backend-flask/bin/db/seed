@@ -5,13 +5,13 @@ NO_COLOR='\033[0m'
 LABEL="DB Seed Load!"
 printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
-ABS_PATH=$(readlink -f "$0")
+# ABS_PATH=$(readlink -f "$0")
 
-PARENT_DIR="$(dirname "$(dirname "$ABS_PATH")")"
+# PARENT_DIR="$(dirname "$(dirname "$ABS_PATH")")"
 
-seed_path="$PARENT_DIR/db/seed.sql"
+# seed_path="$PARENT_DIR/db/seed.sql"
 
-# seed_path=$(realpath .)/backend-flask/db/seed.sql
+seed_path=/workspaces/aws-bootcamp-cruddur-2023/backend-flask/db/seed.sql
 echo $seed_path
 
 if [ "$1" = "prod" ]; then
