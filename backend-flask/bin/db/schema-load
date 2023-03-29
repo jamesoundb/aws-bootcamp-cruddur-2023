@@ -11,7 +11,9 @@ printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 # schema_path="$PARENT_DIR/db/schema.sql"
 
-schema_path=/workspaces/aws-bootcamp-cruddur-2023/backend-flask/db/schema.sql
+# schema_path=/workspaces/aws-bootcamp-cruddur-2023/backend-flask/db/schema.sql
+schema_path="$(realpath .)/db/schema.sql"
+
 echo $schema_path
 
 if [ "$1" = "prod" ]; then

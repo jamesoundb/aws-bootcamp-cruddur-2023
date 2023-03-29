@@ -12,9 +12,9 @@ printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 # bin_path="$PARENT_DIR/db"
 
-bin_path="$(realpath .)/"
+bin_path="$(realpath .)/bin"
 
-source "$bin_path/drop"
-source "$bin_path/create"
-source "$bin_path/schema-load"
-source "$bin_path/seed"
+source "$bin_path/db/drop"
+source "$bin_path/db/create"
+source "$bin_path/db/schema-load"
+source "$bin_path/db/seed"
