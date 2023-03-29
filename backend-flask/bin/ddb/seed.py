@@ -1,16 +1,16 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python3
 
 import boto3
 import sys
 from datetime import datetime, timedelta, timezone
 import uuid
 import os
-from lib.db import db
+
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.abspath(os.path.join(current_path, '..', '..'))
 sys.path.append(parent_path)
-
+from lib.db import db
 
 attrs = {
   'endpoint_url': 'http://localhost:8000'

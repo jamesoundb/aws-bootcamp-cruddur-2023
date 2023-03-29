@@ -4,13 +4,14 @@ import boto3
 import sys
 import json
 import os
-from lib.db import db
+
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 print(f"Current Path >>>>>>> {current_path}")
 parent_path = os.path.abspath(os.path.join(current_path, '..', '..', '..'))
 print(f"Parent Path >>>>>>> {parent_path}")
 sys.path.append(parent_path)
+from lib.db import db
 
 attrs = {
   'endpoint_url': 'http://localhost:8000'
