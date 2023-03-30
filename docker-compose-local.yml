@@ -3,6 +3,9 @@ services:
   backend-flask:
     container_name: cruddur-backend
     environment:
+      # Local DDB
+      AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
+
       # Local DB Connection
       CONNECTION_URL: "postgresql://postgres:password@db:5432/cruddur"
       
