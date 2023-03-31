@@ -3,7 +3,7 @@ set -e # stop if it fails at any point
 
 CYAN='\033[1;36m'
 NO_COLOR='\033[0m'
-LABEL="DB Session are:"
+LABEL="DB Sessions are:"
 printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 # ABS_PATH=$(readlink -f "$0")
@@ -14,7 +14,11 @@ printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 bin_path="$(realpath .)/bin"
 
+echo "<<<< Bin Path >>>>>>>"
+echo $bin_path
+
 source "$bin_path/db/drop"
 source "$bin_path/db/create"
 source "$bin_path/db/schema-load"
 source "$bin_path/db/seed"
+python3 "$bin_path/db/update_cognito_user_ids.py"

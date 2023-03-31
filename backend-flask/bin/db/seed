@@ -13,7 +13,7 @@ printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 # seed_path=/workspaces/aws-bootcamp-cruddur-2023/backend-flask/db/seed.sql
 
-schema_path="$(realpath .)/db/seed.sql"
+seed_path="$(realpath .)/db/seed.sql"
 
 echo $seed_path
 
