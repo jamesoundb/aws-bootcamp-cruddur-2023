@@ -3,7 +3,7 @@
 import boto3
 import sys
 import json
-import datetime
+from datetime import datetime
 
 attrs = {
   'endpoint_url': 'http://localhost:8000'
@@ -18,6 +18,7 @@ table_name = 'cruddur-messages'
 
 message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
 
+current_year = str(datetime.now().year)
 # define the query parameters
 query_params = {
   'TableName': table_name,
@@ -29,7 +30,7 @@ query_params = {
     # ':start_date': { "S": "2023-03-01T00:00:00.000000+00:00" },
     # ':end_date': { "S": "2023-03-28T23:59:59.999999+00:00"},
     ':pk': {'S': f"MSG#{message_group_uuid}"},
-    ':year': {'S': '2023'}
+    ':year': {'S': current_year}
   },
   'ReturnConsumedCapacity': 'TOTAL'
 }
@@ -45,7 +46,7 @@ print(json.dumps(response['ConsumedCapacity'], sort_keys=True, indent=2))
 
 items = response['Items']
 
-reversed_array = items[::-1]
+reversed_array = items.reverse()
 
 for item in reversed_array:
   sender_handle = item['user_handle']['S']
