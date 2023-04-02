@@ -52,12 +52,6 @@ def get_user_uuids():
   print(results)
   return results
 
-message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399" #str(uuid.uuid4())
-users = get_user_uuids()
-
-now = datetime.now(timezone.utc).astimezone()
-
-
 def create_message_group(client,message_group_uuid, my_user_uuid, last_message_at=None, message=None, other_user_uuid=None, other_user_display_name=None, other_user_handle=None):
   table_name = 'cruddur-messages'
   record = {
@@ -76,7 +70,7 @@ def create_message_group(client,message_group_uuid, my_user_uuid, last_message_a
   )
   print(response)
 
-def create_message(client,message_group_uuid, created_at, message, my_user_uuid, my_user_display_name, my_user_handle):
+def create_message(client, message_group_uuid, created_at, message, my_user_uuid, my_user_display_name, my_user_handle):
   record = {
     'pk':   {'S': f"MSG#{message_group_uuid}"},
     'sk':   {'S': created_at },
@@ -92,6 +86,10 @@ def create_message(client,message_group_uuid, created_at, message, my_user_uuid,
     Item=record
   )
   print(response)
+
+message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399" #str(uuid.uuid4())
+users = get_user_uuids()
+now = datetime.now(timezone.utc).astimezone()
 
 
 create_message_group(
@@ -236,7 +234,9 @@ for i in range(len(lines)):
     print(lines[i])
     raise 'invalid line'
 
-  created_at = (now + timedelta(minutes=i)).isoformat()
+  created_at = (now + timedelta(hours=-3) + timedelta(minutes=i)).isoformat()
+  
+  
   create_message(
     client=ddb,
     message_group_uuid= message_group_uuid,
