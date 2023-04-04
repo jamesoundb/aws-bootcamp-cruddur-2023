@@ -13,44 +13,44 @@
 
 #### Instrument HoneyComb with OTEL
 * #### I got all of this up and running without much trouble which was great, instrumenting HoneyComb was very straight forward because their documentation is really solid.
-![HoneyComb_Span_notifications_backend](assets/HoneyComb_Span_notifications_backend.png)
+![HoneyComb_Span_notifications_backend](assets/week_2/HoneyComb_Span_notifications_backend.png)
 
 #### Instrument AWS X-Ray
 * #### Holy cow, this was a lot more difficult than I thought it would be. I wrestled with this for quite sometime, I was able to get the initial trace and segment but adding annotations and metadata were unsolved at this point. I would really like to solve adding annotations in an easier fashion because you are able to search your segments and subsegments based on annotations only. Metadata is not for searches, and I could see how this feature would be beneficial for your SRE teams or Devs that want to filter the traces and segments. I did see Olga's article about tackling this so I know it's possible, I just wish the documentation for X-Ray was better. I'm sure it will improve.
 * #### Here is the trace group that I created.
-![XRay_Create_Trace_Group_awscli](assets/XRay_Create_Trace_Group_awscli.png)
+![XRay_Create_Trace_Group_awscli](assets/week_2/XRay_Create_Trace_Group_awscli.png)
 * #### I created this sampling rule.
-![XRay_Create_Sampling_Rule](assets/XRay_Create_Sampling_Rule.png)
+![XRay_Create_Sampling_Rule](assets/week_2/XRay_Create_Sampling_Rule.png)
 * #### Log group in CloudWatch.
-![XRay_Trace_Groups](assets/XRay_Trace_Groups.png)
+![XRay_Trace_Groups](assets/week_2/XRay_Trace_Groups.png)
 * #### Raw data of the segment and subsegment.
-![XRay_Trace_Raw_Data](assets/XRay_Trace_Raw_Data.png)
+![XRay_Trace_Raw_Data](assets/week_2/XRay_Trace_Raw_Data.png)
 * #### A list of some X-Ray traces.
-![XRay_Trace_list](assets/XRay_Trace_list.png)
+![XRay_Trace_list](assets/week_2/XRay_Trace_list.png)
 
 #### Configure custom logger to send to CloudWatch Logs
 * #### The documentation from AWS was great to be able to get this up and running with no problems.
 * #### This was the CloudWatch log group details.
-![CloudWatch_Log_Group_Details](assets/CloudWatch_Log_Group_Details.png)
+![CloudWatch_Log_Group_Details](assets/week_2/CloudWatch_Log_Group_Details.png)
 * #### Here is a log event.
-![CloudWatch_Log_Stream_Log_Events](assets/CloudWatch_Log_Stream_Log_Events.png)
+![CloudWatch_Log_Stream_Log_Events](assets/week_2/CloudWatch_Log_Stream_Log_Events.png)
 
 #### Integrate Rollbar and capture an error
 * #### I really like how straightforward Rollbar was for integration and it was easy to use. It's nice to be able to capture errors in this way and I can see how helpful this is to anyone looking to monitor errors.
 * #### Here are some items that were errors and warnings that I was able to capture. A good amount of these were when I was trying to instrument X-Ray traces, segments, and subsegments with annotations.
-![Rollbar_error_items.png](assets/Rollbar_error_items.png)
+![Rollbar_error_items.png](assets/week_2/Rollbar_error_items.png)
 * #### Nothing like a classic Hello World! test.
-![Rollbar_Hello_World](assets/Rollbar_Hello_World.png)
+![Rollbar_Hello_World](assets/week_2/Rollbar_Hello_World.png)
 
 ## Homework Challenges
 
 #### Get Codespaces set up and add envars for Codespaces in Github. Added a command in devcontainer.json to update and install npm in the frontend-react-js directory
 * #### I wanted to get Codespaces configured like I have my Gitpod environment configured. I added some extra environment variables to Codespaces like the AWS_CLI_AUTO_PROMPT, HONEYCOMB_API_KEY, HONEYCOMB_SERVICE_NAME, and ROLLBAR_ACCESS_TOKEN. I was also able to add a command to update npm and run npm i in the frontend-react-js directory so I don't need to do that manually everytime I fire up the Codespaces environment.
 * #### I added these environment variables to Codespaces in Github.
-![Secrets_Codespaces](assets/Secrets_Codespaces.png)
+![Secrets_Codespaces](assets/week_2/Secrets_Codespaces.png)
 * #### The frontend container up and running from the Codespaces environment.
-![Frontend_from_Codespaces_env](assets/Frontend_from_Codespaces_env.png)
+![Frontend_from_Codespaces_env](assets/week_2/Frontend_from_Codespaces_env.png)
 * #### The backend container up and running from the Codespaces environment.
-![backend_from_Codespaces_env](assets/backend_from_Codespaces_env.png)
+![backend_from_Codespaces_env](assets/week_2/backend_from_Codespaces_env.png)
 * #### This was the command that I utilized in the devcontainers.json file to run npm update and npm i in the frontend-react-js directory.
-![postCreateCommand_Codespaces](assets/postCreateCommand_Codespaces.png)
+![postCreateCommand_Codespaces](assets/week_2/postCreateCommand_Codespaces.png)

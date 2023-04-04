@@ -13,28 +13,28 @@
 
 #### Setup Cognito User Pool
 * #### I got my user pool properly setup so I could authenticate users.
-![Cognito_user_pool](assets/Cognito_user_pool.png)
+![Cognito_user_pool](assets/week_3/Cognito_user_pool.png)
 
 #### Implement Custom Signin Page
 * #### Signin page implemented
-![Implement_Signin_1](assets/Implement_Signin_1.png)
+![Implement_Signin_1](assets/week_3/Implement_Signin_1.png)
 
 #### Implement Custom Signup Page
 * #### Signed up two users and confirmed with an email confirmation code.
-![assets/Two_users_in_user_pool](assets/Two_users_in_user_pool.png)
+![assets/Two_users_in_user_pool](assets/week_3/Two_users_in_user_pool.png)
 * #### Verified the user with the email confirmation code.
-![Implement_Signup_and_Verification_1](assets/Implement_Signup_and_Verification_1.png)
+![Implement_Signup_and_Verification_1](assets/week_3/Implement_Signup_and_Verification_1.png)
 
 #### Implement Custom Confirmation Page
 * #### Added the custom message that confirmed you were signed in and authentication was also confirmed. Andrew went with a Lore quote, the android who was responsible for the death of all colonists on Omicron Theta. I went with the guy that was intrumental in creating a weapon that destroyed Alderaan. Touché!
-![Darth_Sidious_Secret_Auth_Quote](assets/Darth_Sidious_Secret_Auth_Quote.png)
+![Darth_Sidious_Secret_Auth_Quote](assets/week_3/Darth_Sidious_Secret_Auth_Quote.png)
 
 #### Implement Custom Recovery Page
 * #### I got the recovery code implementation going that sends a recovery code to your email in case you forget your password.
 * #### Recovery Page
-![Implement_Signup_and_Recovery_1](assets/Implement_Signup_and_Recovery_1.png)
+![Implement_Signup_and_Recovery_1](assets/week_3/Implement_Signup_and_Recovery_1.png)
 * #### Recovery code from email
-![Implement_Recovery](assets/Implement_Recovery.png)
+![Implement_Recovery](assets/week_3/Implement_Recovery.png)
 
 #### [Watch about different approaches to verifying JWTs](https://www.youtube.com/watch?v=nJjbI4BbasU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=43)
 * #### Great info here about JWTs and using different libraries to help with authentication. Also a good breakdown on different ways to decouple your application authentication using middleware, API Gateway, or a sidecar container. There are pros and cons to each design that need to be thought over and implemented differently depending on your desired outcome and budget.
@@ -43,6 +43,6 @@
 
 #### I fixed my devcontainers.json postCreateCommand script for Codespaces to get postgresql properly installed.
 * #### I didn't realize that I hadn't implemented this and it took a bit of tinkering but eventually I got it to work.
-![postCreateCommand_sh_script](assets/postCreateCommand_sh_script.png)
+![postCreateCommand_sh_script](assets/week_3/postCreateCommand_sh_script.png)
 * #### Verify that everything was installed and updated
-![All_packages_installed_in_Codespaces_1](assets/All_packages_installed_in_Codespaces_1.png)
+![All_packages_installed_in_Codespaces_1](assets/week_3/All_packages_installed_in_Codespaces_1.png)

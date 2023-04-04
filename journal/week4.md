@@ -7,7 +7,7 @@
 
 #### [Create RDS Postgres Instance](https://www.youtube.com/watch?v=EtD7Kv5YCUs&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46)
 * #### Used the AWS cli to run a script to create an instance instead of doing ClickOps, this is definitely a lot easier than wrestling with the console.
-![cruddur_db_instance.png](assets/cruddur_db_instance.png)
+![cruddur_db_instance.png](assets/week_4/cruddur_db_instance.png)
 
 #### [Bash scripting for common database actions](https://www.youtube.com/watch?v=EtD7Kv5YCUs&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46)
 * #### Created several Bash scripts to help with automating some database tasks including creating the database, connecting to it, dropping the database, setting up the database, listing active sessions, loading schema, and loading seed data. Conditionals were used to indicate if the script were to act on the local database or the Amazon RDS database.
@@ -22,24 +22,24 @@
 
 #### [Create Congito Trigger to insert user into database](https://www.youtube.com/watch?v=7qP4RcY2MwU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=48)
 * #### Created a Lambda function that was triggered to add a user to the RDS when sign up was confirmed through Cognito. The function needed to have an envar for the database connection as well as configuration and permissions set for the trigger to occur.
-![Lambda_envars.png](assets/Lambda_envars.png)
+![Lambda_envars.png](assets/week_4/Lambda_envars.png)
 * #### A Lambda layer was created which allows developers to separate their code and its dependencies. It can also reduce the size of the deployment packages and improve maintainability and reusability of the code. 
-![Lambda_with_layer.png](assets/Lambda_with_layer.png)
+![Lambda_with_layer.png](assets/week_4/Lambda_with_layer.png)
 * #### We needed to then update our schema in our RDS to be able to add this user to the database, we also loaded some mock data to make sure it was implemented correctly.
-![db_schema_load.png](assets/db_schema_load.png)
+![db_schema_load.png](assets/week_4/db_schema_load.png)
 * #### After a few attempts and then placing the Lambda function in our default VPC the Lambda function was successfully triggered when a user signed up to the Cruddur application and was confirmed by Cognito. This added a new user to our database.
-![Lambda_success.png](assets/Lambda_success.png)
+![Lambda_success.png](assets/week_4/Lambda_success.png)
 * #### Mock data and new user added
-![List_of_users_in_db.png](assets/List_of_users_in_db.png)
+![List_of_users_in_db.png](assets/week_4/List_of_users_in_db.png)
 
 #### [Create new activities with a database insert](https://www.youtube.com/watch?v=fTksxEQExL4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=49)
 * #### Went through the video and got everything implemented but was stuck on having my user be attributed to the crud. Here's the first implementation:
-![Working_before_handle_fix.png](assets/Working_before_handle_fix.png)
+![Working_before_handle_fix.png](assets/week_4/Working_before_handle_fix.png)
 * #### After searching through Discord I found the issue was addressed so I followed the instructions listed [here](https://discord.com/channels/1055552619441049660/1086233246691495968/1086233246691495968)
 * #### Once I made these changes I was able to get a crud up with my name attributed, I figured a Star Wars quote was appropriate.
-![James_Luke_Crud.png](assets/James_Luke_Crud.png)
+![James_Luke_Crud.png](assets/week_4/James_Luke_Crud.png)
 
 ## Homework Challenges
 * #### I made a script to start and stop my RDS instance using the AWS cli, it's pretty simple and it's easier to do this than doing it from the console. I added an $RDS_INSTANCE envar to handle my instance name.
-![RDS_start_script.png](assets/RDS_start_script.png)
-![db-stop-script.png](assets/db-stop-script.png)
+![RDS_start_script.png](assets/week_4/RDS_start_script.png)
+![db-stop-script.png](assets/week_4/db-stop-script.png)
