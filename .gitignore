@@ -1,4 +1,6 @@
 docker/dynamodb/*
-*.devcontainer/*
-devcontainer.json
 postCreateCommand.sh
+frontend-react-js/build/*
+session-manager-plugin.deb
+.devcontainer/devcontainer.json
+.devcontainer/Dockerfile
