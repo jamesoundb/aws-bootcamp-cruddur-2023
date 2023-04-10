@@ -1,0 +1,39 @@
+#! /usr/bin/bash
+
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+  echo "Usage: Please provide a service argument. Example: $0 frontend backend"
+  exit 1
+fi
+
+if [ $# -eq 2 ] && [ "$1" = "frontend" ] && [ "$2" = "backend" ] || [ "$1" = "backend" ] && [ "$2" = "frontend" ]; then  
+  CYAN='\033[1;36m'
+  NO_COLOR='\033[0m'
+  LABEL="Creating Frontend and Backend ECS Services!"
+  printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+  aws ecs create-service \
+    --cli-input-json file://aws/json_week_6/service-frontend-react-js.json && \
+  aws ecs create-service \
+    --cli-input-json file://aws/json_week_6/service-backend-flask.json
+  exit 0
+fi
+
+if [ "$1" = "frontend" ]; then
+  CYAN='\033[1;36m'
+  NO_COLOR='\033[0m'
+  LABEL="Creating Frontend ECS Service!"
+  printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+  aws ecs create-service \
+    --cli-input-json file://aws/json_week_6/service-frontend-react-js.json
+  exit 0
+fi
+
+if [ "$1" = "backend" ]; then
+  CYAN='\033[1;36m'
+  NO_COLOR='\033[0m'
+  LABEL="Creating Backend ECS Service!"
+  printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+  aws ecs create-service \
+    --cli-input-json file://aws/json_week_6/service-backend-flask.json
+  exit 0
+fi
+
