@@ -10,7 +10,7 @@ if [ $# -eq 2 ] && [ "$1" = "frontend" ] && [ "$2" = "backend" ] || [ "$1" = "ba
   NO_COLOR='\033[0m'
   LABEL="Deleting Frontend and Backend ECS Services!"
   printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
-  aws ecs delete-service --cluster cruddur --service backend-flask --force && \
+  aws ecs delete-service --cluster cruddur --service backend-flask --force &&
   aws ecs delete-service --cluster cruddur --service frontend-react-js --force
   exit 0
 fi
