@@ -7,13 +7,13 @@ LABEL="DB Sessions are:"
 printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 
 ABS_PATH=$(readlink -f "$0")
-bin_path=$(dirname $ABS_PATH)
+DB_PATH=$(dirname $ABS_PATH)
 
 echo "<<<< Bin Path >>>>>>>"
-echo $bin_path
+echo $DB_PATH
 
-source "$bin_path/db/drop"
-source "$bin_path/db/create"
-source "$bin_path/db/schema-load"
-source "$bin_path/db/seed"
-python3 "$bin_path/db/update_cognito_user_ids.py"
+source "$DB_PATH/db/drop"
+source "$DB_PATH/db/create"
+source "$DB_PATH/db/schema-load"
+source "$DB_PATH/db/seed"
+python3 "$DB_PATH/db/update_cognito_user_ids.py"
