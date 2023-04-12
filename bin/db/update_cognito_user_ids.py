@@ -7,7 +7,7 @@ import sys
 print(">>>> Db-Update-Cognito-User-Ids >>>>>")
 
 current_path = os.path.dirname(os.path.abspath(__file__))
-parent_path = os.path.abspath(os.path.join(current_path, '..', '..'))
+parent_path = os.path.abspath(os.path.join(current_path, '..', '..', 'backend-flask'))
 sys.path.append(parent_path)
 from lib.db import db
 
