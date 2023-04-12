@@ -1,11 +1,21 @@
 #! /usr/bin/bash
 
 if [ $# -lt 1 ] || [ $# -gt 2 ]; then
-  echo "Usage: Please provide a service argument. Example: $0 frontend backend"
+  echo "Usage: Please provide 1 or 2 service arguments. Example: $0 frontend backend or $0 backend"
   exit 1
 fi
 
-if [ $# -eq 2 ] && [ "$1" = "frontend" ] && [ "$2" = "backend" ] || [ "$1" = "backend" ] && [ "$2" = "frontend" ]; then  
+if [ $# -eq 2 ] && [ "$1" = "frontend" ] && [ "$2" = "backend" ]; then  
+  CYAN='\033[1;36m'
+  NO_COLOR='\033[0m'
+  LABEL="Deleting Frontend and Backend ECS Services!"
+  printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+  aws ecs delete-service --cluster cruddur --service backend-flask --force &&
+  aws ecs delete-service --cluster cruddur --service frontend-react-js --force
+  exit 0
+fi
+
+if [ $# -eq 2 ] && [ "$1" = "backend" ] && [ "$2" = "frontend" ]; then  
   CYAN='\033[1;36m'
   NO_COLOR='\033[0m'
   LABEL="Deleting Frontend and Backend ECS Services!"
