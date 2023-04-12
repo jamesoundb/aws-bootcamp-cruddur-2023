@@ -9,9 +9,6 @@ printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
 ABS_PATH=$(readlink -f "$0")
 bin_path=$(dirname $ABS_PATH)
 
-
-bin_path="$(realpath .)/bin"
-
 echo "<<<< Bin Path >>>>>>>"
 echo $bin_path
 
