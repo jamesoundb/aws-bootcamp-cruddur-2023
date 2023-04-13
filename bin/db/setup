@@ -12,8 +12,8 @@ DB_PATH=$(dirname $ABS_PATH)
 echo "<<<< Bin Path >>>>>>>"
 echo $DB_PATH
 
-source "$DB_PATH/db/drop"
-source "$DB_PATH/db/create"
-source "$DB_PATH/db/schema-load"
-source "$DB_PATH/db/seed"
-python3 "$DB_PATH/db/update_cognito_user_ids.py"
+source "$DB_PATH/drop"
+source "$DB_PATH/create"
+source "$DB_PATH/schema-load"
+source "$DB_PATH/seed"
+python3 "$DB_PATH/update_cognito_user_ids.py"
