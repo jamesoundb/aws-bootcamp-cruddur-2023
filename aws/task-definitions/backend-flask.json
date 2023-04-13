@@ -16,7 +16,7 @@
         "healthCheck": {
           "command": [
             "CMD-SHELL",
-            "python /bin/flask/health_check.py"
+            "python /backend-flask/bin/health_check.py"
           ],
           "interval": 30,
           "timeout": 5,
