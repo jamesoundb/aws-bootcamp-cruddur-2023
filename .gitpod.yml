@@ -1,6 +1,6 @@
 tasks:
   - name: Update OS and NPM
-  - init: |
+  - before: |
       sudo apt update -y
       sudo apt upgrade -y
       sudo apt autoremove -y
@@ -9,8 +9,10 @@ tasks:
 #      gp sync-done apt-npm
     command: |
           cd $THEIA_WORKSPACE_ROOT/backend-flask
+          source "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env-gitpod"
           pip3 install -r requirements.txt
           cd $THEIA_WORKSPACE_ROOT/frontend-react-js
+          source "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env-gitpod"
           npm i
           cd $THEIA_WORKSPACE_ROOT
           curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
@@ -19,10 +21,10 @@ tasks:
           sudo apt install -y postgresql-client-13 libpq-dev
 
   
-  - name: Install aws-cli
+  - name: Install aws-cli and ssm plugin
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
-    init: |
+    before: |
       cd /workspace
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
@@ -37,22 +39,6 @@ tasks:
           export GITPOD_IP=$(curl ifconfig.me)
           source $THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod
   
-#   - name: Initialize Backend and Frontend
-#     init: |
-#       gp sync-await apt-npm
-#       cd $THEIA_WORKSPACE_ROOT/backend-flask
-#       pip3 install -r requirements.txt
-#       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
-#       npm i
-#       cd $THEIA_WORKSPACE_ROOT
-  
-#   - name: postgres
-#     init: |
-#       gp sync-await apt-npm
-#       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
-#       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-#       sudo apt update -y
-#       sudo apt install -y postgresql-client-13 libpq-dev
     
 vscode:
   extensions:
