@@ -115,7 +115,7 @@
 * created generate-env-local, generate-env-codespaces, generate-env-gitpod files in bin/backend directory
 * created generate-env-local, generate-env-codespaces, generate-env-gitpod files in bin/frontend directory
 * created erb directory and created three .env.erb files for the backend and three for the frontend matching their repective dev environments for Gitpod, Codespaces, and Local development
-* updated .gitignore file to inclued \*.env
+* updated .gitignore file to included \*.env
 * created busybox docker run script
 * updated the cluster in the console to use container insights
 ## Homework Challenges
