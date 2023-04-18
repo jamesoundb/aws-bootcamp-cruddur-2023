@@ -6,10 +6,6 @@ BIN_PATH=$(dirname $BACKEND_PATH)
 PROJECT_PATH=$(dirname $BIN_PATH)
 ENVFILE_PATH="$PROJECT_PATH/frontend-react-js.env"
 
-echo $PROJECT_PATH
-echo $ENVFILE_PATH
-
-
 docker run --rm \
   --env-file $ENVFILE_PATH \
   --network cruddur-net \
