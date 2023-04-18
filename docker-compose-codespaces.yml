@@ -3,7 +3,7 @@ services:
   backend-flask:
     environment:
       env_file:
-      - backend-flask-codespaces.env
+      - backend-flask.env
     build: ./backend-flask
     ports:
       - "4567:4567"
@@ -14,7 +14,7 @@ services:
   frontend-react-js:
     environment:
       env_file:
-      - frontend-react-js-codespaces.env
+      - frontend-react-js.env
     build: ./frontend-react-js
     ports:
       - "3000:3000"
