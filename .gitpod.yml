@@ -37,7 +37,7 @@ tasks:
   
     command: |
           export DATE=$(date +"%r %Z")
-          export LOCAL_IP=$(curl ifconfig.me)
+          export GITPOD_IP=$(curl ifconfig.me)
           source $THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod
           source $THEIA_WORKSPACE_ROOT/bin/alb/update-sg-rule
   
