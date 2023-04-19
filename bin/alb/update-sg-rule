@@ -1,0 +1,20 @@
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="ALB Update SG Rule Local"
+printf "${CYAN}>> ${LABEL}${NO_COLOR}\n"
+echo "Local IP:"
+echo $LOCAL_IP
+echo "Date:"
+echo $DATE
+
+aws ec2 modify-security-group-rules \
+    --group-id $ALB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$ALB_SG_RULE_ID_1,
+    SecurityGroupRule={Description=Local $DATE,IpProtocol=tcp,FromPort=443,ToPort=443,CidrIpv4=$LOCAL_IP/32}"
+
+aws ec2 modify-security-group-rules \
+    --group-id $ALB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$ALB_SG_RULE_ID_2,
+    SecurityGroupRule={Description=Local $DATE,IpProtocol=tcp,FromPort=80,ToPort=80,CidrIpv4=$LOCAL_IP/32}"
