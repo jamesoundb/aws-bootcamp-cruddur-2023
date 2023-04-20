@@ -118,6 +118,31 @@
 * updated .gitignore file to included \*.env
 * created busybox docker run script
 * updated the cluster in the console to use container insights
+
+## Screenshots
+* #### Hitting the backend api endpoint health check
+![Backend_health_check_with_DNS.png](assets/week_6/Backend_health_check_with_DNS.png)
+* #### Hitting the backend api endpoint for /activities/home
+![Backend_with_DNS.png](assets/week_6/Backend_with_DNS.png)
+* #### Connecting to the backend container
+![Connect_to_container.png](assets/week_6/Connect_to_container.png)
+* #### Backend task definition
+![](assets/week_6/ECS_task_definition.png)
+* #### ECS with ALB and Listeners
+![ECS_with_ALB_and_Listeners.png](assets/week_6/ECS_with_ALB_and_Listeners.png)
+* #### Working frontend with DNS and certificate
+![Working_frontend_with_DNS.png](assets/week_6/Working_frontend_with_DNS.png)
+* #### Messages working with DNS and certificate
+![Messages_working_in_prod.png](assets/week_6/Messages_working_in_prod.png)
+* #### New messages with DNS and certificate
+![New_messages_with_DNS.png](assets/week_6/New_messages_with_DNS.png)
+* #### Frontend notifications page with DNS and certificate
+![Frontend_notifications_with_DNS.png](assets/week_6/Frontend_notifications_with_DNS.png)
+* #### Users @short backend endpoint with DNS and certificate
+![Users_@_short_backend_with_DNS](assets/week_6/Users_@_short_backend_with_DNS.png)
+* #### Shell into frontend prod container
+![shell_into_frontend_prod_container.png](assets/week_6/shell_into_frontend_prod_container.png)
+
 ## Homework Challenges
 
 #### Created a cluster service create and delete script using bash and the aws cli tool. 
