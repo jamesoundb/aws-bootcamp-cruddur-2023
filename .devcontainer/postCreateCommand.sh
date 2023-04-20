@@ -18,6 +18,7 @@ export CODESPACES_IP="$(curl ifconfig.me)"
 cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/rds/update-sg-rule-codespaces;
 
 # ALB Update SG Rule
+export LOCAL_IP=198.54.133.149
 cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/alb/update-sg-rule
 
 # Install-session-manager-plugin
