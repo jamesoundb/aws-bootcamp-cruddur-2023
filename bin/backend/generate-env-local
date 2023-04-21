@@ -4,5 +4,5 @@ require 'erb'
 
 template = File.read 'erb/backend-flask-local.env.erb'
 content = ERB.new(template).result(binding)
-filename = "backend-flask-local.env"
+filename = "backend-flask.env"
 File.write(filename, content)
