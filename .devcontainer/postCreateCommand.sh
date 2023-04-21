@@ -29,4 +29,4 @@ cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/backend/generate-env-code
 cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/frontend/generate-env-codespaces;
 
 # Login to ECR
-aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
+cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/ecr/ecr-login
