@@ -8,11 +8,11 @@ tasks:
       npm install -g npm@latest
 #      gp sync-done apt-npm
     command: |
-          cd $THEIA_WORKSPACE_ROOT/backend-flask
           source "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env-gitpod"
+          source "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env-gitpod"
+          cd $THEIA_WORKSPACE_ROOT/backend-flask
           pip3 install -r requirements.txt
           cd $THEIA_WORKSPACE_ROOT/frontend-react-js
-          source "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env-gitpod"
           npm i
           cd $THEIA_WORKSPACE_ROOT
           curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
