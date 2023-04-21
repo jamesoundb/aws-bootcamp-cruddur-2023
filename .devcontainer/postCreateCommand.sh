@@ -24,6 +24,9 @@ cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/alb/update-sg-rule;
 # Install-session-manager-plugin
 curl 'https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb' -o 'session-manager-plugin.deb' && sudo dpkg -i session-manager-plugin.deb;
 
-#Generate Envs
+# Generate Envs
 cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/backend/generate-env-codespaces;
-cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/frontend/generate-env-codespaces
+cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/frontend/generate-env-codespaces;
+
+# Login to ECR
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
