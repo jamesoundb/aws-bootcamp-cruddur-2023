@@ -6,14 +6,14 @@
 * Ashish discusses the securtiy best practices for ECS including public vs. private repos for ECR, Amazon ECR Image scan, VPC Endpoints, Security Groups, using SCP to manage task deletions, ECS creation as well as using CLoudTrail and AWS Config Rules.
 
 #### [Watch Fargate Technical Questions with Maish](https://www.youtube.com/watch?v=w_YcwJxvoHQ)
-* A great interview here discussing Fargate and how it works, with other technical questions covering best practices for running containers
+* A great interview here discussing Fargate and how it works, with other technical questions covering best practices for running containers.
 
 #### [Provision ECS Cluster, Create ECR repo, push image for backend-flask, and Deploy Backend Flask app as a service to Fargate](https://www.youtube.com/watch?v=QIZx2NhdCMI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=58)
 * covered spend considerations for Fargate 
 * added health check route to app.py
 * made an RDS test connection Python script 
 * created a flask health check script
-* created a CloudWatch log Group for the backend, 
+* created a CloudWatch log Group for the backend
 * created the cruddur cluster in ECS 
 * created the backend repo and base image 
 * logged into ECR through aws cli
@@ -83,8 +83,6 @@
 * Tag the image and push it to ECR using the push script
 * created deploy script to update the service in ECS
 * Update docker build scripts to use absolute paths
-* updated gitpod.yml RDS security group update script path
-* updated RDS security group script path in devcontainer.json file for local dev container and the path was also updated in the postCommandCreate script
 
 #### [Refactor bin directory to be top level](https://www.youtube.com/watch?v=HyJOjBjieb4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=62)
 * moved bin directory to root directory
@@ -98,6 +96,7 @@
 * updated db.py to add the missing return in the query_object_json function
 * created new bin directory in backend-flask directory and moved the health_check.py file there
 * verified that messages were now working in prod
+* updated RDS security group script path in devcontainer.json file for local dev container, updated path in .gitpod.yml for Gitpod and updated the path in postCommandCreate script for Codespaces
 
 #### [Implement Refresh Token for Amazon Cognito](https://www.youtube.com/watch?v=LNLP2dxa5EQ&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=63)
 * update checkAuth.js refresh access_token
@@ -115,11 +114,42 @@
 * created generate-env-local, generate-env-codespaces, generate-env-gitpod files in bin/backend directory
 * created generate-env-local, generate-env-codespaces, generate-env-gitpod files in bin/frontend directory
 * created erb directory and created three .env.erb files for the backend and three for the frontend matching their repective dev environments for Gitpod, Codespaces, and Local development
+* updated docker compose file with cruddur-net network name
 * updated .gitignore file to included \*.env
 * created busybox docker run script
 * updated the cluster in the console to use container insights
+
+## Screenshots
+* #### Hitting the backend api endpoint health check
+![Backend_health_check_with_DNS.png](assets/week_6/Backend_health_check_with_DNS.png)
+* #### Hitting the backend api endpoint for /activities/home
+![Backend_with_DNS.png](assets/week_6/Backend_with_DNS.png)
+* #### Connecting to the backend container
+![Connect_to_container.png](assets/week_6/Connect_to_container.png)
+* #### Backend task definition
+![](assets/week_6/ECS_task_definition.png)
+* #### ECS with ALB and Listeners
+![ECS_with_ALB_and_Listeners.png](assets/week_6/ECS_with_ALB_and_Listeners.png)
+* #### Working frontend with DNS and certificate
+![Working_frontend_with_DNS.png](assets/week_6/Working_frontend_with_DNS.png)
+* #### Messages working with DNS and certificate
+![Messages_working_in_prod.png](assets/week_6/Messages_working_in_prod.png)
+* #### New messages with DNS and certificate
+![New_messages_with_DNS.png](assets/week_6/New_messages_with_DNS.png)
+* #### Frontend notifications page with DNS and certificate
+![Frontend_notifications_with_DNS.png](assets/week_6/Frontend_notifications_with_DNS.png)
+* #### Users @short backend endpoint with DNS and certificate
+![Users_@_short_backend_with_DNS](assets/week_6/Users_@_short_backend_with_DNS.png)
+* #### Shell into frontend prod container
+![shell_into_frontend_prod_container.png](assets/week_6/shell_into_frontend_prod_container.png)
+
+* #### For more screenshots and proof of work go [here](https://github.com/jamesoundb/aws-bootcamp-cruddur-2023/tree/main/journal/assets/week_6)
+
 ## Homework Challenges
 
 #### Created a cluster service create and delete script using bash and the aws cli tool. 
-* I wanted to have a script that would create my frontend and backend services and another one to delete them. The script can be used to create or delete both services or just one depending on the arguments that you pass to it.
-* In line with trying to keep up with maintaining all three dev environments Gitpod, Codespaces, and Local I needed to create .env files and .env.erb files for the frontend and three for the backend for all three environments. I also had to create three generate-env files for the backend and three for the frontend so they would read the correct .env.erb files to generate the correct envars depending on what environment I was using. Definitely a lot more work than I was expecting to maintain all of these but I got it working in the end.
+* I wanted to have a script that would create my frontend and backend services and another one to delete them. The script can be used to create or delete both services or just one depending on the arguments that you pass to it. This was super helpful to use to limit spend because there is no reason to keep the cluster running if I wasn't working on it and I didn't want to keep going back and forth in the console to delete or create these services. These scripts are located at ./bin/ecs/create-service and ./bin/ecs/delete-service.
+#### Maintaining all three dev environments
+* In line with trying to keep up with maintaining all three dev environments Gitpod, Codespaces, and Local I needed to create .env files and .env.erb files for the frontend and for the backend for all three environments. I also had to create three generate-env files for the backend and three for the frontend so they would read the correct .env.erb files to generate the correct envars depending on what environment I was using. Definitely a lot more work than I was expecting to maintain all of these but I got it working in the end.
+#### Creating a script to modify the security group for the ALB
+* I created another script that was very similar to the rds-security-update script but it was for the alb security group instead. It modifies the the alb security group to allow access to the frontend and backend from your current IP address. I was able to get the script to work from my local dev environment but I was unable to modify it to work for Codespaces or Gitpod when you start those environments. The reason being was there was no way that I could find to get the IP address for your local machine from within the Codespaces or Gitpod environments. When you run the curl ifconfig.me command on start up of the Codespaces or Gitpod environments it will only grab the IP address of the container workspace. I tried multiple ways to get my machine's address but was unable to come up with a solution that ran the script on start up of either of those workspaces. Instead my solution was to just hard code my IP address in the .gitpod.yml file for Gitpod and hard code it in the postCreateCommand script. My local dev environment however was able to grab the IP address of my machine just fine because that environment runs strictly on my machine. Hopefully I will be able to find a solution for the Codespaces and Gitpod environments in the future.
