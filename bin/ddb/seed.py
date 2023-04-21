@@ -240,7 +240,6 @@ for i in range(len(lines)):
   create_message(
     client=ddb,
     message_group_uuid= message_group_uuid,
-    created_at=created_at,
     created_at=created_at.isoformat(),
     message=message,
     my_user_uuid=users[key]['uuid'],
