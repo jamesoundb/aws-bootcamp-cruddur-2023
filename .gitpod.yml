@@ -51,13 +51,19 @@ vscode:
     - ms-python.python
 
 ports:
-  - name: frontend
+  - name: Frontend
     port: 3000
     onOpen: open-browser
     visibility: public
-  - name: backend
+  - name: Backend
     port: 4567
     visibility: public
-  - name: xray-daemon
+  - name: Xray-Daemon
+    port: 2000
+    visibility: public
+  - name: Postgres
+    port: 5432
+    visibility: public
+  - name: Dynamodb-local
     port: 2000
     visibility: public
