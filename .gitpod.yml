@@ -1,5 +1,5 @@
 tasks:
-  - name: Update OS and NPM
+  - name: Update OS, NPM, and other setup scripts
   - before: |
       sudo apt update -y
       sudo apt upgrade -y
@@ -21,7 +21,7 @@ tasks:
           sudo apt install -y postgresql-client-13 libpq-dev
 
   
-  - name: Install aws-cli and ssm plugin
+  - name: Install aws-cli, ssm plugin, and execute security group update scripts
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
