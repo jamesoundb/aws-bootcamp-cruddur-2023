@@ -3,7 +3,7 @@
 import boto3
 import sys
 import json
-from datetime import datetime
+import datetime
 
 attrs = {
   'endpoint_url': 'http://localhost:8000'
@@ -18,7 +18,7 @@ table_name = 'cruddur-messages'
 
 message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
 
-current_year = str(datetime.now().year)
+current_year = str(datetime.datetime.now().year)
 # define the query parameters
 query_params = {
   'TableName': table_name,
@@ -45,13 +45,12 @@ print(json.dumps(response, sort_keys=True, indent=2))
 print(json.dumps(response['ConsumedCapacity'], sort_keys=True, indent=2))
 
 items = response['Items']
+items.reverse()
 
-reversed_array = items.reverse()
-
-for item in reversed_array:
+for item in items:
   sender_handle = item['user_handle']['S']
   message       = item['message']['S']
   timestamp     = item['sk']['S']
-  dt_object = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f%z')
+  dt_object = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f')
   formatted_datetime = dt_object.strftime('%Y-%m-%d %I:%M %p')
   print(f'{sender_handle: <16}{formatted_datetime: <22}{message[:40]}...')

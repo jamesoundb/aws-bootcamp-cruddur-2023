@@ -8,7 +8,7 @@ from datetime import datetime
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 print(f"Current Path >>>>>>> {current_path}")
-parent_path = os.path.abspath(os.path.join(current_path, '..', '..', '..'))
+parent_path = os.path.abspath(os.path.join(current_path, '..', '..', '..', 'backend-flask'))
 print(f"Parent Path >>>>>>> {parent_path}")
 sys.path.append(parent_path)
 from lib.db import db
