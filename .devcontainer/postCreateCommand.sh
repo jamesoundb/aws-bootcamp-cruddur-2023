@@ -32,4 +32,5 @@ cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/frontend/generate-env-cod
 cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/ecr/ecr-login;
 
 # Install AWS CDK
-npm install aws-cdk -g
+npm install aws-cdk -g;
+cd /workspaces/aws-bootcamp-cruddur-2023/thumbing-serverless-cdk && npm i
