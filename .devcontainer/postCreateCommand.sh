@@ -29,4 +29,7 @@ cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/backend/generate-env-code
 cd /workspaces/aws-bootcamp-cruddur-2023 && ruby ./bin/frontend/generate-env-codespaces;
 
 # Login to ECR
-cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/ecr/ecr-login
+cd /workspaces/aws-bootcamp-cruddur-2023 && bash ./bin/ecr/ecr-login;
+
+# Install AWS CDK
+npm install aws-cdk -g
