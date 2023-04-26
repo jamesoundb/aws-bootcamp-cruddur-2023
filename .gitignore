@@ -5,3 +5,4 @@ session-manager-plugin.deb
 .devcontainer/devcontainer.json
 .devcontainer/Dockerfile
 *.env
+node_modules
