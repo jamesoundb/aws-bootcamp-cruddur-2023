@@ -16,6 +16,7 @@ tasks:
           cd $THEIA_WORKSPACE_ROOT/frontend-react-js
           npm i
           cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
+          cp .env.example .env
           npm i
           cd $THEIA_WORKSPACE_ROOT
           curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
