@@ -7,22 +7,22 @@ export function format_datetime(value) {
 }
 
 export function message_time_ago(value){
-  console.log(value)
   const datetime = DateTime.fromISO(value, { zone: 'utc' })
   const created = datetime.setZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
   const now     = DateTime.now()
-  console.log('message_time_group',created,now)
   const diff_mins = now.diff(created, 'minutes').toObject().minutes;
   const diff_hours = now.diff(created, 'hours').toObject().hours;
+  const diff_days = now.diff(created, "days").toObject().days;
 
   if (diff_hours > 24.0){
-    return created.toFormat("LLL L");
+    return `${Math.floor(diff_days)}d`;
+    //return created.toFormat("LLL L");
   } else if (diff_hours < 24.0 && diff_hours > 1.0) {
     return `${Math.floor(diff_hours)}h`;
   } else if (diff_hours < 1.0) {
     return `${Math.round(diff_mins)}m`;
   } else {
-    console.log('dd', diff_mins,diff_hours)
+    console.log('dd', diff_mins,diff_hours,diff_days)
     return 'unknown'
   }
 }
