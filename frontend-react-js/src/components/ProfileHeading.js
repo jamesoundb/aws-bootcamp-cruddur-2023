@@ -12,7 +12,7 @@ export default function ProfileHeading(props) {
   <div className='activity_feed_heading profile_heading'>
     <div className='title'>{props.profile.display_name}</div>
     <div className="cruds_count">{props.profile.cruds_count} Cruds</div>
-    <div class="banner" style={styles} >
+    <div className="banner" style={styles} >
       <div className="avatar">
         <img src="https://assets.jameswurbel-cruddur.com/avatars/C3PO_2.jpg"></img>
       </div>
