@@ -2,11 +2,11 @@
 
 set -e # stop if it fails at any point
 
-if [ -z "$1" ]; then
-  echo "No TABLE_NAME argument supplied eg. bin/rds/describ-table cruddur-messages"
-  exit 1
-fi
-TABLE_NAME=$1
+# if [ -z "$1" ]; then
+#   echo "No TABLE_NAME argument supplied eg. bin/rds/describe-table cruddur-messages"
+#   exit 1
+# fi
+TABLE_NAME=cruddur-messages
 
 if [ "$2" = "prod" ]; then
   ENDPOINT_URL=""
@@ -17,4 +17,4 @@ fi
 echo "Deleting table: $TABLE_NAME"
 
 aws dynamodb delete-table  $ENDPOINT_URL \
-  --table-name $TABLE_NAME
+  --table-name $TABLE_NAME > /dev/null 2>&1
