@@ -14,9 +14,10 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 from services.users_short import *
+from services.update_profile import *
 
 # Flask-AWSCognito Auth
-from lib.cognito_jwt_token import CognitoJwtToken, TokenVerifyError, FlaskAWSCognitoError, extract_access_token
+from lib.cognito_jwt_token import CognitoJwtToken, TokenVerifyError, extract_access_token
 
 #Rollbar modules and imports
 import rollbar
@@ -161,6 +162,29 @@ def data_messages(message_group_uuid):
       # unauthenticated request
       app.logger.debug(e)
       return {}, 401
+  
+@app.route("/api/profile/update", methods=['POST','OPTIONS'])
+@cross_origin()
+def data_update_profile():
+  bio          = request.json.get('bio',None)
+  display_name = request.json.get('display_name',None)
+  access_token = extract_access_token(request.headers)
+  try:
+    claims = cognito_token_verify.verify(access_token)
+    user_id = claims['sub']
+    model = UpdateProfile.run(
+      cognito_user_id=user_id,
+      bio=bio,
+      display_name=display_name
+    )
+    if model['errors'] is not None:
+      return model['errors'], 422
+    else:
+      return model['data'], 200
+  except TokenVerifyError as e:
+    # unauthenicatied request
+    app.logger.debug(e)
+    return {}, 401
 
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
