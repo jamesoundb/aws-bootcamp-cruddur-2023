@@ -3,7 +3,7 @@
 }
 
 .profile_heading .avatar {
-    position: relative;
+    position: absolute;
     bottom: -74px;
     left: 16px;
   }
@@ -44,6 +44,11 @@
   }
 
   .profile_heading .cruds_count {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .profile_heading .bio {
+    padding: 16px;
     color: rgba(255, 255, 255, 0.7);
   }
 
