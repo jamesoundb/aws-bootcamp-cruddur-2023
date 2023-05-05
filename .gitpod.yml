@@ -6,7 +6,6 @@ tasks:
       sudo apt autoremove -y
       npm update -g 
       npm install -g npm@latest
-      npm install aws-cdk -g
     command: |
           source "$THEIA_WORKSPACE_ROOT/bin/ecr/ecr-login"
           ruby "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env-gitpod"
@@ -14,10 +13,11 @@ tasks:
           cd $THEIA_WORKSPACE_ROOT/backend-flask
           pip3 install -r requirements.txt
           cd $THEIA_WORKSPACE_ROOT/frontend-react-js
-          npm i
+          npm install -g npm@latest
           cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
           cp .env.example .env
-          npm i
+          npm install -g npm@latest
+          npm install aws-cdk -g
           cd $THEIA_WORKSPACE_ROOT
           curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
           echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
