@@ -1,31 +1,53 @@
-tasks:
-  - name: Update OS, NPM, and other setup scripts
-  - before: |
-      sudo apt update -y
-      sudo apt upgrade -y
-      sudo apt autoremove -y
-      npm update -g 
-      npm install -g npm@latest
-    command: |
-          source "$THEIA_WORKSPACE_ROOT/bin/ecr/ecr-login"
-          ruby "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env-gitpod"
-          ruby "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env-gitpod"
-          cd $THEIA_WORKSPACE_ROOT/backend-flask
-          pip3 install -r requirements.txt
-          cd $THEIA_WORKSPACE_ROOT/frontend-react-js
-          npm install -g npm@latest
-          cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
-          cp .env.example .env
-          cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
-          npm install aws-cdk -g
-          cd $THEIA_WORKSPACE_ROOT
-          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
-          echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-          sudo apt update -y
-          sudo apt install -y postgresql-client-13 libpq-dev
+# tasks:
+#   - name: Update OS, NPM, and other setup scripts
+#   - before: |
+#       sudo apt update -y
+#       sudo apt upgrade -y
+#       sudo apt autoremove -y
+#       npm update -g 
+#       npm install -g npm@latest
+#     command: |
+#           source "$THEIA_WORKSPACE_ROOT/bin/ecr/ecr-login"
+#           ruby "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env-gitpod"
+#           ruby "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env-gitpod"
+#           cd $THEIA_WORKSPACE_ROOT/backend-flask
+#           pip3 install -r requirements.txt
+#           cd $THEIA_WORKSPACE_ROOT/frontend-react-js
+#           npm install -g npm@latest
+#           cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
+#           cp .env.example .env
+#           cd $THEIA_WORKSPACE_ROOT/thumbing-serverless-cdk
+#           npm install aws-cdk -g
+#           cd $THEIA_WORKSPACE_ROOT
+#           curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+#           echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+#           sudo apt update -y
+#           sudo apt install -y postgresql-client-13 libpq-dev
 
   
-  - name: Install aws-cli, ssm plugin, and execute security group update scripts
+#   - name: Install aws-cli, ssm plugin, and execute security group update scripts
+#     env:
+#       AWS_CLI_AUTO_PROMPT: on-partial
+#     before: |
+#       cd /workspace
+#       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#       unzip awscliv2.zip
+#       sudo ./aws/install
+#       cd $THEIA_WORKSPACE_ROOT
+#       curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+#       sudo dpkg -i session-manager-plugin.deb
+
+      
+  
+#     command: |
+#           export DATE=$(date +"%r %Z")
+#           export GITPOD_IP=$(curl ifconfig.me)
+#           export LOCAL_IP=198.54.133.149
+#           source $THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod
+#           source $THEIA_WORKSPACE_ROOT/bin/alb/update-sg-rule
+
+tasks:
+  - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
@@ -34,18 +56,42 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
+      bash bin/ecr/ecr-login
+  - name: postgres
+    before: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+    command: |
+      export DATE=$(date +"%r %Z")
+      export GITPOD_IP=$(curl ifconfig.me)
+      export LOCAL_IP=198.96.89.231
+      source  "$THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod"
+      source $THEIA_WORKSPACE_ROOT/bin/alb/update-sg-rule
+  - name: react-js
+    command: |
+      ruby $THEIA_WORKSPACE_ROOT/bin/frontend/generate-env
+      cd frontend-react-js
+      npm i
+  - name: flask
+    command: |
+      ruby $THEIA_WORKSPACE_ROOT/bin/backend/generate-env
+      cd backend-flask
+      pip install -r requirements.txt
+  - name: fargate
+    before: |
+      cd /workspace
       curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
       sudo dpkg -i session-manager-plugin.deb
-
-      
-  
-    command: |
-          export DATE=$(date +"%r %Z")
-          export GITPOD_IP=$(curl ifconfig.me)
-          export LOCAL_IP=198.54.133.149
-          source $THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod
-          source $THEIA_WORKSPACE_ROOT/bin/alb/update-sg-rule
-  
+      cd $THEIA_WORKSPACE_ROOT
+      cd backend-flask
+  - name: cdk
+    before: |
+      npm install aws-cdk -g
+      cd thumbing-serverless-cdk
+      cp .env.example .env
+      npm i
     
 vscode:
   extensions:
