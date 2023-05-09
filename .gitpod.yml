@@ -53,6 +53,7 @@ vscode:
     - cweijan.vscode-postgresql-client2
     - ms-azuretools.vscode-docker
     - ms-python.python
+    - rangav.vscode-thunder-client
 
 ports:
   - name: Frontend
