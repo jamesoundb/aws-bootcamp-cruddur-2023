@@ -22,6 +22,7 @@ export default function ProfileForm(props) {
       const res = await fetch(backend_url, {
         method: "POST",
         headers: {
+          'Origin': '',
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ export default function ProfileForm(props) {
       console.log('<<<<<S3 Upload>>>>>')
       const backend_url = ""
       const res = await fetch(backend_url, {
-        method: "PUT",
+        method: "POST",
         body: file,
         headers: {
           'Content-Type': type

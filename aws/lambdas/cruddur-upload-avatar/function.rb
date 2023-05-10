@@ -13,5 +13,12 @@ def handler(event:, context:)
     url = obj.presigned_url(:put, expires_in: 60 * 5)
     url # this is the data that will be returned
     body = {url: url}.to_json
+    {
+        headers: {
+            "Access-Control-Allow-Headers": "*, Authorization",
+            "Access-Control-Allow-Origin": "",
+            "Access-Control-Allow-Headers": "OPTIONS, GET, POST"
+        }
+    }
     { statusCode: 200, body: body }
 end
