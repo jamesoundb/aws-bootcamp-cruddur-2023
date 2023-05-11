@@ -22,7 +22,7 @@ export default function ProfileForm(props) {
       const res = await fetch(backend_url, {
         method: "POST",
         headers: {
-          'Origin': '',
+          'Origin': 'https://3000-jamesoundb-awsbootcampc-ovlmmgp4whr.ws-us97.gitpod.io',
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -46,19 +46,22 @@ export default function ProfileForm(props) {
     const type = file.type
     const preview_image_url = URL.createObjectURL(file)
     console.log(filename,size,type)
+    const presignedurl = await s3uploadkey()
+    console.log('presignedurl',presignedurl)
   
     try {
       console.log('<<<<<S3 Upload>>>>>')
-      const backend_url = ""
-      const res = await fetch(backend_url, {
-        method: "POST",
+      const res = await fetch(presignedurl, {
+        method: "PUT",
         body: file,
         headers: {
           'Content-Type': type
         }})
       let data = await res.json();
       if (res.status === 200) {
+        setPresignedurl(data.url)
         console.log("presigned url:", data)
+        return data.url
       } else {
         console.log(res)
       }
@@ -127,16 +130,8 @@ export default function ProfileForm(props) {
           </div>
           <div className="popup_content">
 
-            <div className='upload' onClick={s3uploadkey}>
-              Upload Avatar
-            </div>
           <input type='file' name="avatarupload" onChange={s3upload} />
-            
-            <div className='upload' onClick={s3upload}>
-              Upload Avatar For Real!
-            </div>
-
-
+       
             <div className="field display_name">
               <label>Display Name</label>
               <input
