@@ -59,7 +59,7 @@ tasks:
       bash bin/ecr/ecr-login
       export DATE=$(date +"%r %Z")
       export GITPOD_IP=$(curl ifconfig.me)
-      export LOCAL_IP=198.96.89.231
+      export LOCAL_IP=206.217.205.87
       source "$THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule-gitpod"
       source "$THEIA_WORKSPACE_ROOT/bin/alb/update-sg-rule"
   - name: postgres
